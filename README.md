@@ -1,4 +1,4 @@
 # html-snake
 
 ### Snake Static Webpage
-### Just run the index.html...
+### Just run the index.html

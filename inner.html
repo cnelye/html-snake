@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows for Chrome</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/taskbar.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/desktop.css">
+</head>
+<body>
+    <div class="desktop-icon">
+        <i ondblclick = "call_window(private)" class="desktop-icon1">
+            <img src="img/desktop-icon/desktop-private.png">
+            <div>administrator</div>
+        </i>
+
+        <i>
+            <img src="img/desktop-icon/desktop-computer.png">
+            <div>我的电脑</div>
+        </i>
+
+        <i>
+            <img src="img/desktop-icon/desktop-network.png">
+            <div>网络</div>
+        </i>
+
+        <i>
+            <img src="img/desktop-icon/desktop-bin-filled.png">
+            <div>回收站</div>
+        </i>
+
+        <i>
+            <img src="img/desktop-icon/desktop-control.png">
+            <div>控制面板</div>
+        </i>
+
+        <i ondblclick="flush_food();snake_go_right();">
+            <img src="img/desktop-icon/desktop-bat.png">
+            <div>开始游戏.bat</div>
+        </i>
+
+        <i ondblclick="open_readme()">
+            <img src="img/desktop-icon/desktop-text.png">
+            <div>README.txt</div>
+        </i>
+    </div>
+
+    <div class="taskbar">
+        <span class="taskbar-left">
+            <i class="iconfont icon-Windows"></i>
+            <i class="iconfont icon-sousuo"></i>
+            <img src="img/desktop-icon/desktop-text.png" class="taskbar-readme">
+        </span>
+
+        <span class="taskbar-right">
+            <i class="iconfont icon-xiangshangjiantou"></i>
+            <i class="iconfont icon-dianchi"></i>
+            <i class="iconfont icon-wuxianwifi"></i>
+            <i class="iconfont icon-shengyinkai"></i>
+            <!-- <i class="iconfont icon-shengyinguanbi"></i> -->
+            <i>中</i>
+            <span class="taskbar-time">
+                <div class="taskbar-time-up"></div>
+                <div class="taskbar-time-down"></div>
+            </span>
+        </span>
+    </div>
+
+    <div class="readme">
+        <div class="readme-title">
+            <img src="img/desktop-icon/desktop-text.png" width="16px">
+            README.txt - 记事本
+        </div>
+        <article>
+            <div>欢迎使用 Windows for Chrome</div>
+            <br>
+            <div>你可以选择双击文件 开始游戏.bat</div>
+            <div>以开始游戏 Snake for Windows</div>
+            <br>
+            <div>游戏规则</div>
+            <div>1.使用键盘 上下左右 改变snake的移动方向</div>
+            <div>2.让snake吃到food.txt</div>
+            <br>
+            <div>你现在可以关闭记事本开始游戏了！</div>
+            <br>
+        </article>
+        <span class="readme-close" onclick="close_readme()">X</span>
+    </div>
+
+    <div class="power-on">
+        <div class="title-360">360开机小助手</div>
+        <div class="power-on-time">
+            <span id="power-time">0</span>
+            <span>秒</span>
+        </div>
+        <div>打败了全国 0.01% 的电脑</div>
+        <button onclick="alert('你真卸载啊？这个功能我没写哈哈哈');" style="cursor: pointer;">立即卸载</button>
+        <div>您的电脑已经没救啦，快把我卸载吧</div>
+        <div class="warning-360">
+            <div>建议您安装腾讯电脑管家</div>
+            <div>以拉低同行平均开机时间</div>
+        </div>
+        <span class="power-close" onclick="power_close()">X</span>
+    </div>
+    <!-- 有人夜里看海，有人凌晨四点写期末大作业 -->
+</body>
+<script src="js/snake.js"></script>
+<script>
+    function open_readme(){document.getElementsByClassName('readme')[0].style.display = 'block';document.getElementsByClassName('taskbar-readme')[0].style.display = 'block';}
+    function close_readme(){document.getElementsByClassName('readme')[0].style.display = 'none';document.getElementsByClassName('taskbar-readme')[0].style.display = 'none';}
+    var time = new Date();
+    document.getElementsByClassName('taskbar-time-up')[0].innerHTML = (time.getHours() > 9 ? time.getHours() : '0' + time.getHours()) + ':' + (time.getMinutes() > 9 ? time.getMinutes() : '0' + time.getMinutes()) + ':' + (time.getSeconds() > 9 ? time.getSeconds() : '0' + time.getSeconds());
+    document.getElementsByClassName('taskbar-time-down')[0].innerHTML = time.getFullYear() + '/' + ((time.getMonth() + 1) > 9 ? (time.getMonth() + 1) : '0' + (time.getMonth() + 1)) + '/' + (time.getDate() > 9 ? time.getDate() : '0' + time.getDate());
+    setInterval(function(){var time = new Date();document.getElementsByClassName('taskbar-time-up')[0].innerHTML = (time.getHours() > 9 ? time.getHours() : '0' + time.getHours()) + ':' + (time.getMinutes() > 9 ? time.getMinutes() : '0' + time.getMinutes()) + ':' + (time.getSeconds() > 9 ? time.getSeconds() : '0' + time.getSeconds());document.getElementsByClassName('taskbar-time-down')[0].innerHTML = time.getFullYear() + '/' + ((time.getMonth() + 1) > 9 ? (time.getMonth() + 1) : '0' + (time.getMonth() + 1)) + '/' + (time.getDate() > 9 ? time.getDate() : '0' + time.getDate());},1000);
+    setTimeout(function(){document.getElementsByClassName("power-on")[0].style.transform = "translateX(-5px)";setTimeout(function(){var i = 0;setInterval(function(){i += 1847;if(i <= 114514){document.getElementById("power-time").innerHTML = i;}}, 30);}, 500)}, 1000);
+    function power_close(){document.getElementsByClassName("power-on")[0].style.transform = "translateX(450px)";};
+</script>
+</html>

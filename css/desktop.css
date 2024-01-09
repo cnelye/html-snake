@@ -1,0 +1,81 @@
+.desktop-icon
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(18,92px);
+    grid-template-rows: repeat(8,90px);
+    text-align: center;
+    align-items: center;
+    font-size: .6em;
+    color: #fff;
+    text-shadow: #404040 3px 2px 3px;
+}
+
+.desktop-icon i
+{
+    padding: 8px;
+    cursor: default;
+}
+
+.desktop-icon i:hover
+{
+    background-color: #ffffff33;
+    border: #ffffff66 1px solid;
+}
+
+.desktop-icon img
+{
+    width: 48px;
+    height: 48px;
+}
+
+.readme
+{
+    position: absolute;
+    width: 720px;
+    height: 480px;
+    left: 360px;
+    top: 80px;
+    background-color: #fafafa;
+    border: 1px solid #999;
+    border-radius: 2px;
+    display: none;
+}
+
+.readme-title
+{
+    background-color: #e0e0e0;
+    height: 32px;
+    line-height: 32px;
+}
+
+.readme-title>img
+{
+    vertical-align: text-top;
+    margin-top: 2px;
+    margin-left: 8px;
+}
+
+.readme article
+{
+    padding: 3px;
+}
+
+.readme-close
+{
+    width: 2em;
+    position: absolute;
+    font-size: 1.5em;
+    right: 0px;
+    top: 0;
+    text-align: center;
+}
+
+.readme-close:hover
+{
+    background-color: #bd1210;
+    color: #fff;
+}

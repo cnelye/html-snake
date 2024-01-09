@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Hello</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/locked.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+</head>
+<body>
+    <div class="login-ui-outer">
+        <div class="time">
+            <div class="time_1"></div>
+            <div class="time_2"></div>
+        </div>
+
+        <div class="icon">
+            <i class="iconfont icon-wuxianwifi"></i>
+            <i class="iconfont icon-dianchi"></i>
+        </div>
+    </div>
+
+    <div class="login-ui-inner">
+        <div class="login-content">
+            <img src="img/header.jpg">
+            <div class="pre-hidden">
+                <div>administrator</div>
+                <div class="login-button">
+                    <button onclick="login_button()">登录</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-welcome" id="login-welcome">
+            <img src="img/loading.gif" width="36px">
+            <span>欢迎</span>
+        </div>
+
+        <div class="icon">
+            <i class="iconfont icon-wuxianwifi"></i>
+            <i class="iconfont icon-wuzhangaisheshi"></i>
+            <i class="iconfont icon-guanji"></i>
+        </div>
+    </div>
+</body>
+<script>
+    var time = new Date();
+    var week = ["一","二","三","四","五","六","日"];
+    document.getElementsByClassName("time_1")[0].innerHTML = (time.getHours() > 9 ? time.getHours() : "0" + time.getHours()) + ":" + (time.getMinutes() > 9 ? time.getMinutes() : "0" + time.getMinutes());
+    document.getElementsByClassName("time_2")[0].innerHTML = ((time.getMonth() + 1) > 9 ? (time.getMonth() + 1) : '0' + (time.getMonth() + 1)) + "月" + (time.getDate() > 9 ? time.getDate() : '0' + time.getDate()) + "日" + ", 星期" + week[time.getDay() - 1];
+    setInterval(function(){var time = new Date();document.getElementsByClassName("time_1")[0].innerHTML = (time.getHours() > 9 ? time.getHours() : "0" + time.getHours()) + ":" + (time.getMinutes() > 9 ? time.getMinutes() : "0" + time.getMinutes());}, 60000);
+    setInterval(function(){var time = new Date();document.getElementsByClassName("time_2")[0].innerHTML = (time.getMonth() + 1) + "月" + time.getDate() + "日" + ", 星期" + week[time.getDay() - 1];}, 60000);
+    var login_ui_outer = document.getElementsByClassName("login-ui-outer")[0];
+    login_ui_outer.onclick = function(){document.getElementsByClassName("login-ui-outer")[0].style.transform = "translateY(-100vh)";var i = -0.15;setInterval(function(){i+=0.005;if(i < 0.4 && i > 0){document.getElementsByClassName("login-ui-inner")[0].style.display = "block";document.getElementsByClassName("login-ui-inner")[0].style.backgroundColor = "rgba(0, 0, 0, " + i + ")"}}, 10);}
+    function login_button(){document.getElementsByClassName("pre-hidden")[0].style.display = "none";document.getElementsByClassName("login-welcome")[0].style.display = "block";setTimeout(function(){window.location.href="inner.html"}, 2500)};
+</script>
+</html>
